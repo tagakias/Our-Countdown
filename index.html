@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Our Celebration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            color: white;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            text-align: center;
+        }
+        #countdown {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.7);
+        }
+        #to-text {
+            font-size: 2rem;
+            font-family: 'Great Vibes', cursive;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.7);
+        }
+        #celebration-text {
+            font-size: 4rem;
+            font-family: 'Great Vibes', cursive;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+            text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.8);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+    <script>
+        function getTomorrow9PM() {
+            const now = new Date();
+            let target = new Date();
+
+            target.setDate(now.getDate() + 1); // Move to tomorrow
+            target.setHours(21, 0, 0, 0); // Set time to 9 PM
+
+            return target;
+        }
+
+        function updateCountdown() {
+            const countdownElement = document.getElementById("countdown");
+            const targetTime = getTomorrow9PM();
+            
+            function tick() {
+                const now = new Date();
+                const remainingTime = targetTime - now;
+
+                if (remainingTime <= 0) {
+                    window.location.href = "home.html"; // Redirect when time is up
+                } else {
+                    const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+                    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+                    
+                    countdownElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
+                }
+            }
+
+            tick(); // Update immediately
+            setInterval(tick, 1000); // Update every second
+        }
+
+        window.onload = function() {
+            updateCountdown();
+            // Store the custom message
+            localStorage.setItem("customMessage", "Happy First Month, My Love ❤️");
+        };
+    </script>
+</head>
+<body>
+    <div id="countdown">Loading...</div>
+    <div id="to-text">To</div>
+    <div id="celebration-text">our first month celebration ❤️</div>
+</body>
+</html>

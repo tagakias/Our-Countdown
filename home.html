@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Special Message</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #ff758c, #ff7eb3);
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+        img {
+            width: 90%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        #message {
+            font-size: 1.8rem;
+            max-width: 80%;
+            text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.8);
+            white-space: pre-line;
+            line-height: 1.5;
+            padding: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 600px) {
+            #message {
+                font-size: 1.4rem;
+                max-width: 95%;
+            }
+            img {
+                width: 95%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="Love.jpg" alt="Us Together">
+    <div id="message"></div>
+
+    <script>
+        const poem = `Taylor Swift gave me an idea about The 1.
+She made me look forward to meeting that specific person I've always prayed to God for.
+Time and again I thought I've found her, but time and again I get proved wrong and I falter.
+I shake it off and tell myself, eventually I'll meet her.
+So I kept myself busy and didn't worry about the thought.
+I drew, I went out, stayed in, upskilled, basically what a nerd does so I don't think much about you.
+It took a long time and I told myself, maybe I am not lucky enough like others to meet their The 1, not even in my Wildest Dreams. 
+But then a friend of mine told me to try dating, and that's when I met YOU. 
+
+We talked and got to know each other, and that's how the story of us came to be.
+Right from the get go, I knew You Belong with me. 
+Right from the get go, seeing Daylight made me feel so free, free because there wasn't any sign of toxicity.
+Right from the get go, I saw how reassuring you are and how you love me like how I love you.
+Now, every night we talk and now we know each other better, it makes me think that I can't believe now I do have a Lover. 
+Not just a simple lover, but someone who loves me like how I love her. 
+A month of loving and to eternity we shall be beside each other.
+Here's to more "just because" surprises and genuine milestone celebrations of our love.
+And that's how Taylor Swift helped me appreciate you being my The 1`;
+
+        document.getElementById("message").textContent = poem;
+    </script>
+</body>
+</html>
