@@ -43,19 +43,25 @@
         }
     </style>
     <script>
-        function getTomorrow9PM() {
+        function getToday9PMPhilippines() {
             const now = new Date();
-            let target = new Date();
-
-            target.setDate(now.getDate() + 1); // Move to tomorrow
-            target.setHours(21, 0, 0, 0); // Set time to 9 PM
-
+            const options = { timeZone: "Asia/Manila", hour12: false };
+            const formatter = new Intl.DateTimeFormat("en-US", options);
+            
+            const philippineNow = new Date(formatter.format(now));
+            const target = new Date(philippineNow);
+            target.setHours(21, 0, 0, 0); // 9 PM Manila time today
+            
+            if (now > target) {
+                target.setDate(target.getDate() + 1); // If past 9 PM, set for tomorrow
+            }
+            
             return target;
         }
 
         function updateCountdown() {
             const countdownElement = document.getElementById("countdown");
-            const targetTime = getTomorrow9PM();
+            const targetTime = getToday9PMPhilippines();
             
             function tick() {
                 const now = new Date();
@@ -78,7 +84,6 @@
 
         window.onload = function() {
             updateCountdown();
-            // Store the custom message
             localStorage.setItem("customMessage", "Happy First Month, My Love ❤️");
         };
     </script>
